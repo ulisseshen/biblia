@@ -1,13 +1,13 @@
 // script usado para contar as palavra nos livros da Biblia.
 // script feitos no navegador.
 let regexs = {
-  palavraPortugues: /[a-zA-Zà-úÀ-Ú-]+/gmi
+  palavraPortugues: /[A-zÀ-Ú-]+/gmi
 }
 
 let bible = JSON.parse(document.body.innerText)
 
 let livro = bible.map(book => book.chapters.join(' ')).join(' ')
-let palavras = livro.match(regexs.palavraPortugues)
+let palavras = livro.match(regexs.palavraPortugues).map(c => c.toLowerCase())
 
 let livros = bible.map(book => book.chapters.join(' ')
                        .replace(/"/gi,"")
