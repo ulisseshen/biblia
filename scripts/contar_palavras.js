@@ -5,6 +5,10 @@ let regexs = {
 }
 
 let bible = JSON.parse(document.body.innerText)
+
+let livro = bible.map(book => book.chapters.join(' ')).join(' ')
+let palavras = livro.match(regexs.palavraPortugues)
+
 let livros = bible.map(book => book.chapters.join(' ')
                        .replace(/"/gi,"")
                        .replace(/,,/gm, " ")
